@@ -6,6 +6,7 @@ import { processLiveMessage, processVoDMessage, setPronouns } from "../messagePr
 
 const chatMessageText = 'test';
 const chatMessageUsername = 'Alejo_47';
+const chatMessageLocalizedUsername = 'アレホ';
 
 const chatMessageFakeUsername = 'NotAnUser';
 
@@ -179,6 +180,42 @@ const generateSampleVoDChatMessage = (username: string): HTMLElement => {
 		])
 	]);
 };
+
+const generateLocalizedFFZSampleChatMessage = (username: string, localizedName: string) => {
+	const badgeSpan = createElement('span', undefined, 'chat-line__message--badges', [
+		createElement('span', {
+			'data-provider': 'twitch',
+			'data-badge': 'vip',
+			'data-version': '1',
+			'data-tooltip-type': 'badge',
+			'data-badge-data': '[{"provider":"twitch","badge":"vip","version":"1","data":false}]'
+		}, 'ffz-tooltip ffz-badge'),
+		createElement('span', {
+			'data-provider': 'twitch',
+			'data-badge': 'premium',
+			'data-version': '1',
+			'data-tooltip-type': 'badge',
+			'data-badge-data': '[{"provider":"twitch","badge":"premium","version":"1","data":false}]'
+		}, 'ffz-tooltip ffz-badge'),
+	])
+
+	const usernameSpan = createElement('span', {
+		'role': 'button',
+		'style': 'color: rgb(0, 0, 0);'
+	}, 'chat-line__username notranslate', [
+		createElement('span', {
+			'style': 'color: rgb(0, 0, 0);',
+		}, 'chat-author__display-name', [
+			localizedName
+		]),
+		createElement('span', {
+			'style': 'color: rgb(0, 0, 0);',
+		}, 'chat-author__intl-login', [
+			` (${username})`
+		]),
+	])
+// WIP
+}
 
 describe('Message from user with pronouns', () => {
 	beforeEach(() => {
