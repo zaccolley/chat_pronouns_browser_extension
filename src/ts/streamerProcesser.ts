@@ -5,14 +5,19 @@ const getPronounsElement = () => {
     return document.getElementById(PRONOUNS_TAG_ELEMENT_ID);
 }
 
+/*
+	We look for:
+	+ It's a link <a>
+	+ The tw-tag class
+	+ A link to a tag page
+*/
+const TAG_LINK_SELECTOR = "a.tw-tag[href*='/tags/']";
+const getAllTagLinkElements = () => {
+	return [...document.querySelectorAll(TAG_LINK_SELECTOR)];
+}
+
 const getTagLinkElement = () => {
-	/*
-		We look for:
-		+ It's a link <a>
-		+ The tw-tag class
-		+ A link to a tag page
-	*/
-	return document.querySelector("a.tw-tag[href*='/directory/all/tags']");
+	return document.querySelector(TAG_LINK_SELECTOR);
 }
 
 let haveTagElementsLoaded: boolean = false;
@@ -113,6 +118,12 @@ export const processStreamerPronounsTag = async () => {
 
 	const pronoun = await getUserPronoun(username);
 	if (!pronoun) {
+		return;
+	}
+
+	// you can add tags manually in twitch
+	const hasPronounTagAlready = getAllTagLinkElements().map((a: any) => a.innerText.toLowerCase()).includes(pronoun.toLowerCase())
+	if (hasPronounTagAlready) {
 		return;
 	}
 
