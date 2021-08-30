@@ -1,7 +1,7 @@
 {
-	"name": "Twitch Chat pronouns",
-	"version": "0.2.0",
-	"description": "Add Pronouns to Twitch Chat",
+	"name": "zactopus Twitch Extension",
+	"version": "1.0.0",
+	"description": "Testing",
 	"content_scripts": [
 		{
 			"matches": [
