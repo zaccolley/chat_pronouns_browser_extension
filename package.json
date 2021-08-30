@@ -1,6 +1,6 @@
 {
   "name": "chat_pronouns_browser_extension",
-  "version": "1.0.0",
+  "version": "1.2.1",
   "main": "index.js",
   "repository": "git@github.com:Alejo47/chat_pronouns_browser_extension.git",
   "author": "Alejo Pereyra <alejo.andres.pereyra@gmail.com>",
@@ -9,10 +9,10 @@
     "@types/chai": "^4.2.16",
     "@types/mocha": "^8.2.2",
     "@types/sinon": "^9.0.11",
-    "bestzip": "^2.1.7",
     "chai": "^4.3.4",
     "copy-webpack-plugin": "^7.0.0",
     "css-loader": "^5.0.1",
+    "dotenv": "^10.0.0",
     "isomorphic-fetch": "^3.0.0",
     "jsdom": "^16.5.2",
     "jsdom-global": "^3.0.2",
@@ -32,9 +32,12 @@
   "scripts": {
     "build": "webpack",
     "watch": "webpack -w",
-    "zip": "cd dist && bestzip ../out.zip ./*",
     "test": "TS_NODE_COMPILER_OPTIONS='{\"module\": \"commonjs\" }' mocha './src/ts/**/*.test.ts'",
-    "watch-test": "TS_NODE_COMPILER_OPTIONS='{\"module\": \"commonjs\" }' mocha './src/ts/**/*.test.ts' -w"
+    "watch-test": "TS_NODE_COMPILER_OPTIONS='{\"module\": \"commonjs\" }' mocha './src/ts/**/*.test.ts' -w",
+    "build:extension": "npm run build && npm run web-ext:lint && npm run web-ext:sign && npm run web-ext:build",
+    "web-ext:lint": "web-ext lint --source-dir dist/",
+    "web-ext:sign": "console.log('Signing extension. This will take a while') && node web-ext-sign.js",
+    "web-ext:build": "web-ext build --source-dir dist/"
   },
   "mocha": {
     "require": [

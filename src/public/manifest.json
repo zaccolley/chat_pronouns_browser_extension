@@ -1,7 +1,7 @@
 {
 	"name": "zactopus Twitch Extension",
-	"version": "1.0.0",
-	"description": "Testing",
+	"version": "1.2.1",
+	"description": "Adds pronouns from pronouns.alejo.io",
 	"content_scripts": [
 		{
 			"matches": [
