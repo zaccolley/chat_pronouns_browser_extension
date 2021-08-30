@@ -83,7 +83,9 @@ const createNewTagElement = (tagElement: HTMLElement, pronoun: string, username:
 	newTagLinkElement.href = 'https://pronouns.alejo.io/';
 	
 	const [newTagLinkSpacingElement] = newTagLinkElement.childNodes;
-	newTagLinkSpacingElement.innerHTML = pronoun;
+	if (newTagLinkSpacingElement) {
+		newTagLinkSpacingElement.innerText = pronoun;
+	}
 	
 	return newTagElement
 }
