@@ -34,9 +34,8 @@
     "watch": "webpack -w",
     "test": "TS_NODE_COMPILER_OPTIONS='{\"module\": \"commonjs\" }' mocha './src/ts/**/*.test.ts'",
     "watch-test": "TS_NODE_COMPILER_OPTIONS='{\"module\": \"commonjs\" }' mocha './src/ts/**/*.test.ts' -w",
-    "build:extension": "npm run build && npm run web-ext:lint && npm run web-ext:sign && npm run web-ext:build",
+    "build:extension": "npm run build && npm run web-ext:lint && npm run web-ext:build",
     "web-ext:lint": "web-ext lint --source-dir dist/",
-    "web-ext:sign": "console.log('Signing extension. This will take a while') && node web-ext-sign.js",
     "web-ext:build": "web-ext build --source-dir dist/"
   },
   "mocha": {
